@@ -1,59 +1,56 @@
-# ZenBlogClient
+# ZenBlog — Client
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.16.
+ZenBlog blog uygulamasının Angular 21 tabanlı frontend'idir. Hem ziyaretçiye yönelik blog arayüzünü hem de yönetim (admin) panelini içerir.
 
-## Development server
+## 🚀 Teknolojiler
 
-To start a local development server, run:
+- **Angular 21** (Zoneless — değişiklik algılama `signal()` tabanlı)
+- **TypeScript**
+- Module-based yapı (NgModule) + yeni control flow (`@if`, `@for`)
+- **RxJS** (HttpClient)
+- **@auth0/angular-jwt** — JWT token çözümleme & yetkilendirme
+- **Bootstrap 5** + Bootstrap Icons + Font Awesome
+- **SweetAlert2**, **Alertify** — bildirimler
+- **Swiper**, **AOS** — slider & scroll animasyonları
 
-```bash
-ng serve
-```
+## 🗂️ Proje Yapısı
+src/app
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+├── _layouts           # main-layout (ziyaretçi), admin-layout (panel)
 
-## Code scaffolding
+├── _main-components   # home, blogdetails, login, contact, category-blogs ...
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+├── _admin-components  # category, blog, comment, message, social, contact-info
 
-```bash
-ng generate component component-name
-```
+├── _services          # API servisleri (HttpClient)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+├── _models            # DTO arayüzleri
 
-```bash
-ng generate --help
-```
+├── _guards            # AuthGuard
 
-## Building
+├── _interceptors      # TokenInterceptor (JWT header)
 
-To build the project run:
+├── app-module.ts
 
-```bash
-ng build
-```
+└── app-routing-module.ts
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## ✨ Özellikler
 
-## Running unit tests
+### Ziyaretçi Arayüzü
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+- **Home** — son bloglar + kategoriye göre blog grid'i
+- **Blog Detay** — dinamik içerik, yorumlar ve yanıtlar (reply)
+- **Kategori sayfası** — `/category/:id`, kategoriye ait tüm bloglar
+- **Dinamik header/footer** — sosyal medya bağlantıları & iletişim bilgileri DB'den
+- **İletişim formu** — mesaj gönderme
 
-```bash
-ng test
-```
+### Admin Paneli
 
-## Running end-to-end tests
+- Blog, Category, Comment, Message, Social, ContactInfo yönetimi
+- Mesajlar için okundu / okunmadı filtreleme
+- JWT korumalı rotalar (AuthGuard)
 
-For end-to-end (e2e) testing, run:
+---
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+> Bu proje **ZenBlog** uygulamasının **frontend (Web UI)** kısmıdır.
+> Backend (.NET 9 API) için: **ZenBlogServer**
